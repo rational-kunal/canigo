@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">
+                Hello, {{ user.username }}
+            </h5>
+
+            <h6 class="card-subtitle mb-2 text-muted">some good quote</h6>
+
+            <p class="card-text">
+                some good description
+            </p>
+
+            <a href="{% url 'staff_home' %}" class="card-link">All</a>
+            <a href="{% url 'approved_ticket_list' %}" class="card-link">Approved Tickets</a>
+            <a href="{% url 'disapproved_ticket_list' %}" class="card-link">Disapproved Tickets</a>
+        </div>
+    </div>
+
+    {% include 'reviewer/button_ticket_iterator.html' with heading=heading all_ticket=all_ticket %}
+
+{% endblock %}

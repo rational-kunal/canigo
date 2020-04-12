@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">
+                Create card
+            </h5>
+            <p class="text-muted">Some good description</p>
+
+            <form action={% url "create_ticket" %} method="post">
+                {% csrf_token %}
+
+                {{ form|crispy }}
+
+                <input class='btn btn-primary' type="submit" value="Submit"/>
+            </form>
+
+        </div>
+    </div>
+{% endblock %}

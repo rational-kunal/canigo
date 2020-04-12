@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p>
+{{ ticket.reason }}
+{{ ticket.when }}
+{{ ticket.where }}
+{{ ticket.duration }}
+{{ ticket.approved }}
+{{ ticket.approved_updated_at }}
+</p>
+{% endblock %}

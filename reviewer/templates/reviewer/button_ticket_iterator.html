@@ -1,0 +1,27 @@
+<div class="card my-5">
+    <div class="card-body">
+        <h6 class="card-title">
+            {{ heading }}
+        </h6>
+        <div class="list-group">
+            {% for ticket in all_ticket %}
+                <div class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{ ticket.where }} - {{ ticket.when }}</h5>
+                        {#<small>when</small>#}
+                    </div>
+                    <p class="mb-1">for {{ ticket.duration }} hr</p>
+                    <p class="mb-1">{{ ticket.reason }} </p>
+
+                    <div>
+                        {% if ticket.approved %}
+                            <a href="{% url 'disapprove_ticket' ticket.id %}" class="btn btn-warning"> disapprove </a>
+                        {% else %}
+                            <a href="{% url 'approve_ticket' ticket.id %}" class="btn btn-success"> approve </a>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

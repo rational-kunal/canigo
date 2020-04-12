@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">
+                Hello, {{ user.username }}
+            </h5>
+
+            <h6 class="card-subtitle mb-2 text-muted">some good quote</h6>
+
+            <p class="card-text">
+                some good description
+            </p>
+
+            <a href="{% url 'create_ticket' %}" class="card-link">request for pass</a>
+        </div>
+    </div>
+
+    <div class="card mt-5">
+        <div class="card-body">
+            <h6 class="card-title">
+                passes
+            </h6>
+            <div class="list-group">
+                {% for ticket in tickets_by_user %}
+                    <div class="list-group-item list-group-item-action text-light {% if ticket.approved %} bg-success {% else %} bg-danger {% endif %}">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">
+                                {% if ticket.approved %}
+                                    Approved
+                                {% else %}
+                                    Not yet approved
+                                {% endif %}
+                            </h5>
+                            {#<small>when</small>#}
+                        </div>
+                        <p class="mb-1">{{ ticket.where }} - {{ ticket.when }}</p>
+                        <small>{{ ticket.reason }} </small>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
